@@ -72,15 +72,15 @@ export async function sendFriendRequest(req, res) {
       });
     }
 
-    const FriendRequest = await FriendRequest.create({
+    const friendRequest = await FriendRequest.create({
       sender: myId,
       recipient: recipientId,
     });
 
-    res.status(201).json(FriendRequest);
+    res.status(201).json(friendRequest);
   } catch (error) {
     console.error("Error in sendFriendRequest controller", error.message);
-    res.status(500), json({ message: "Internal Server Error" });
+    res.status(500).json({ message: "Internal Server Error" });
   }
 }
 
