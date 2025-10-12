@@ -1,4 +1,4 @@
-import { QueryClient, useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import useAuthUser from "../hooks/useAuthUser";
 import toast from "react-hot-toast";
 import { completeOnboarding } from "../lib/api";
@@ -17,11 +17,12 @@ const OnboardingPage = () => {
     profilePic: authUser?.profilePic || "",
   });
 
+  const queryClient = useQueryClient();
   const { mutate: onboardingMutation, isPending } = useMutation({
     mutationFn: completeOnboarding,
     onSuccess: () => {
       toast.success("Profile onboarded successfully");
-      QueryClient.invalidateQueries({ queryKey: ["authUser"] });
+      queryClient.invalidateQueries({ queryKey: ["authUser"] });
     },
 
     onError: (error) => {
@@ -44,7 +45,7 @@ const OnboardingPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-base-100 flex items-center justify-center" data-theme="corporate">
+    <div className="min-h-screen bg-base-100 flex items-center justify-center" data-theme="night">
       <div className="card bg-base-200 w-full max-w-3xl shadow-xl">
         <div className="card-body p-6 sm:p-8">
           <h1 className="text-2xl sm:text-3xl font-bold text-center mb-6">
