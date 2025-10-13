@@ -96,7 +96,6 @@ const CallPage = () => {
 };
 
 
-
 const CallContent = () => {
   const { useCallCallingState } = useCallStateHooks();
   const callingState = useCallCallingState();
