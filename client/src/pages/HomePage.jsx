@@ -73,6 +73,7 @@ const HomePage = () => {
           </div>
         )}
 
+       {/**MEET NEW LEARNER SECTION */}
         <section>
           <div className="mb-6 sm:mb-8">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
